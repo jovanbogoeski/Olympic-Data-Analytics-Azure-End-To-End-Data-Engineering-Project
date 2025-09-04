@@ -7,6 +7,8 @@ Raw CSVs are ingested, transformed into Delta tables, and served for analytics a
 It uses:
 Azure Data Factory · Azure Databricks · Azure Data Lake Storage Gen2 · Azure Synapse Analytics · Power BI
 
+🏗️ Architecture
+<!-- Replace with your diagram path or use the line below --> <!-- ![Architecture](images/architecture.png) -->
 🔹 Data Source
 
 CSV datasets (e.g., Athletes, Coaches, Medals, Teams, EntriesGender).
@@ -77,3 +79,5 @@ Azure Databricks
 Azure Synapse Analytics
 
 Power BI
+
+If you want, I can drop in a tiny “Run order for SQL scripts” snippet and an architecture image link line matching your repo paths.

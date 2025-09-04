@@ -1,77 +1,98 @@
-🏅 Olympic-Data-Analytics-Azure-End-To-End-Data-Engineering-Project
-📌 Overview
+# 🏅 **Olympic-Data-Analytics-Azure-End-To-End-Data-Engineering-Project**
 
-This project shows an end-to-end Azure data pipeline for Olympic datasets.
-Raw CSVs are ingested, transformed into Delta tables, and served for analytics and dashboards using a modern lakehouse design.
+## 📌 **Overview**
+This project demonstrates an **end-to-end data engineering pipeline on Microsoft Azure**, built around **Olympic Games datasets**.  
 
-It uses: Azure Data Factory • Azure Databricks • Azure Data Lake Storage Gen2 • Azure Synapse Analytics • Power BI.
+The solution ingests raw data, transforms it into structured formats, and enables advanced analytics and dashboarding.  
 
-🏗️ Architecture
-<!-- Replace the path below with your actual file if needed -->
+It follows a **modern data lakehouse architecture** using:  
+- **Azure Data Factory**  
+- **Azure Databricks**  
+- **Azure Data Lake Storage Gen2**  
+- **Azure Synapse Analytics**  
+- **Power BI**  
 
-🔹 Data Source
+---
 
-CSV datasets (e.g., Athletes, Coaches, Medals, Teams, EntriesGender).
+## 🏗️ **Architecture**
+<!-- Replace with your diagram path -->
 
-🔹 Data Ingestion (Azure Data Factory)
+### 🔹 **Data Source**
+Olympic datasets (CSV files such as **Athletes, Coaches, Medals, Teams, EntriesGender**) are used as input.  
 
-Copy raw CSVs (e.g., GitHub) into ADLS Gen2 → raw/ zone.
+### 🔹 **Data Ingestion (Azure Data Factory)**
+- Ingests raw CSV datasets from the source (e.g., GitHub or public repository).  
+- Stores them in the **Raw Zone** of Azure Data Lake Storage Gen2.  
 
-🔹 Raw Data Store (ADLS Gen2)
+### 🔹 **Raw Data Store (ADLS Gen2)**
+- Serves as the **Bronze Layer** in the medallion architecture.  
+- Holds unprocessed, raw CSV files.  
 
-Bronze layer holding unprocessed CSV files.
+### 🔹 **Transformation (Azure Databricks)**
+- Performs **data cleaning** (missing values, schema fixes).  
+- Applies **business logic transformations**.  
+- Writes curated data to the **Transformed Zone (Silver/Gold layers)** in ADLS Gen2.  
 
-🔹 Transformation (Azure Databricks)
+### 🔹 **Transformed Data (ADLS Gen2)**
+- Stores **Delta tables** ready for analytics.  
+- Acts as the **single source of truth** for downstream consumption.  
 
-Clean data, apply business rules, and write Delta outputs to ADLS → transformed/ (Silver/Gold).
+### 🔹 **Analytics (Azure Synapse Analytics)**
+- Connects to **transformed Delta tables** stored in ADLS Gen2.  
+- Provides a **SQL analytics layer** for BI tools.  
 
-🔹 Transformed Data (ADLS Gen2)
+### 🔹 **Dashboards (Power BI)**
+- Visualizes Olympic data insights such as:  
+  - **Medal tallies per country**  
+  - **Gender distribution in events**  
+  - **Athlete participation trends**  
 
-Curated Delta tables as the single source of truth.
+---
 
-🔹 Analytics (Azure Synapse Analytics)
+## ⚙️ **Technologies Used**
+- **Azure Data Factory (ADF)** → Data ingestion pipelines  
+- **Azure Data Lake Storage Gen2 (ADLS)** → Raw & transformed zones  
+- **Azure Databricks (Delta Lake)** → Cleaning & transformations  
+- **Azure Synapse Analytics** → SQL analytics layer  
+- **Power BI** → Interactive dashboards & reports  
 
-Query Delta directly with serverless SQL (OPENROWSET … FORMAT='DELTA') and expose views for BI.
+---
 
-🔹 Dashboards (Power BI)
+## 🚀 **Getting Started**
 
-Visualize insights such as medal tallies, gender distribution, and athlete participation trends.
+### ✅ **Prerequisites**
+- Azure subscription (**Free Trial** or **Pay-As-You-Go**)  
+- Resource group with:  
+  - **Data Factory**  
+  - **Data Lake Storage Gen2**  
+  - **Databricks Workspace**  
+  - **Synapse Workspace**  
+  - **Power BI Desktop** installed locally  
 
-⚙️ Technologies Used
+---
 
-Azure Data Factory (ADF) – ingestion
+### ⚡ **Steps**
 
-Azure Data Lake Storage Gen2 (ADLS) – raw & transformed zones
+#### 1. **Ingest Data**
+- Use **ADF pipelines** to copy raw CSVs from source (GitHub/raw link).  
+- Store in **ADLS raw/** zone.  
 
-Azure Databricks (Delta Lake) – cleaning & transformations
+#### 2. **Transform Data**
+- Run **Databricks notebooks** to process raw data.  
+- Save results in **Delta format** to ADLS **transformed/** zone.  
 
-Azure Synapse Analytics (serverless SQL) – analytics layer
+#### 3. **Analytics Layer**
+- Connect **Synapse** to ADLS Delta tables.  
+- Expose **views/tables** for reporting.  
 
-Power BI – dashboards & reporting
+#### 4. **Visualize Insights**
+- Import **Synapse datasets** into Power BI.  
+- Build **interactive dashboards**.  
 
-🚀 Getting Started
-✅ Prerequisites
+---
 
-Azure subscription (Free Trial or Pay-As-You-Go)
-
-Resource group with ADF, ADLS Gen2, Databricks, Synapse, Power BI Desktop
-
-⚡ Steps
-
-Ingest Data – use ADF to copy CSVs to ADLS raw/.
-
-Transform Data – run Databricks notebooks; write Delta to ADLS transformed/.
-
-Analytics Layer – in Synapse (serverless) create views over Delta (via OPENROWSET … FORMAT='DELTA').
-
-Visualize – connect Power BI to Synapse views and build dashboards.
-
-📚 References
-
-Azure Data Factory
-
-Azure Databricks
-
-Azure Synapse Analytics
-
-Power BI
+## 📚 **References**
+- [**Azure Data Factory Documentation**](https://learn.microsoft.com/en-us/azure/data-factory/)  
+- [**Azure Databricks Documentation**](https://learn.microsoft.com/en-us/azure/databricks/)  
+- [**Azure Synapse Analytics Documentation**](https://learn.microsoft.com/en-us/azure/synapse-analytics/)  
+- [**Power BI Documentation**](https://learn.microsoft.com/en-us/power-bi/)  
